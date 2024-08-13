@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:employees_app/constants.dart';
 import 'package:employees_app/provider/counter.dart';
@@ -23,21 +22,21 @@ class Dashboard extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Text(
               'number of yes answers : ${counterrr.yesCount}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               'number of no answers : ${counterrr.noCount}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
            CustomDropDown(),
 
 

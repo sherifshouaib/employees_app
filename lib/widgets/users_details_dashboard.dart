@@ -1,13 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:employees_app/models/question.dart';
 import 'package:employees_app/provider/dashboard_detail.dart';
-import 'package:employees_app/provider/user_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class UsersDetailsDashboard extends StatefulWidget {
-  UsersDetailsDashboard({super.key});
+  const UsersDetailsDashboard({super.key});
 
   @override
   State<UsersDetailsDashboard> createState() => _UsersDetailsDashboardState();
@@ -72,7 +72,7 @@ class _UsersDetailsDashboardState extends State<UsersDetailsDashboard> {
       future: fetchUsers2(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (snapshot.hasError) {
@@ -81,7 +81,7 @@ class _UsersDetailsDashboardState extends State<UsersDetailsDashboard> {
           final questions = snapshot.data!;
           return ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: 1,
             itemBuilder: (context, index) {
               // final question = questions[index];
@@ -102,14 +102,14 @@ class _UsersDetailsDashboardState extends State<UsersDetailsDashboard> {
                  
                   Text(
                     '${datalist[index]}: ${datalist2[index]}',
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    style: const TextStyle(fontSize: 18, color: Colors.black),
                   ),
                 ],
               );
             },
           );
         } else {
-          return Center(child: Text('No data found'));
+          return const Center(child: Text('No data found'));
         }
       },
     );

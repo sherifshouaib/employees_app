@@ -1,7 +1,6 @@
 import 'package:drop_down_list/drop_down_list.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:employees_app/provider/dashboard_detail.dart';
-import 'package:employees_app/provider/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +32,7 @@ class _AppTextFieldState extends State<AppTextField> {
         isDismissible: true,
         bottomSheetTitle: Text(
           widget.title,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20.0,
           ),
@@ -59,7 +58,7 @@ class _AppTextFieldState extends State<AppTextField> {
           for (var item in selectedList) {
             if (item is SelectedListItem) {
               //   list.add(item.name);
-              print(item.name);
+              //print(item.name);
               widget.textEditingController.text = item.name;
             }
           }

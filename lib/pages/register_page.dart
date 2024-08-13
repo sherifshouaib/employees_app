@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
 
   static String id = 'RegisterPage';
 
@@ -150,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 CustomFormTextField(

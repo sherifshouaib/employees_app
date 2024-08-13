@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:employees_app/models/question.dart';
 import 'package:employees_app/provider/counter.dart';
 import 'package:employees_app/provider/user_data.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +26,7 @@ class _GetDataFromEmployeeToFirebaseState
     final counterrr = Provider.of<Counter>(context);
   
     final userdata = Provider.of<UserData>(context);
-    final credential = FirebaseAuth.instance.currentUser;
+   // final credential = FirebaseAuth.instance.currentUser;
 
     String? fullname;
     // Question? q1;
@@ -48,22 +49,22 @@ class _GetDataFromEmployeeToFirebaseState
           // print(firstname);
           // print(lastname);
 
-          fullname = '${firstname} ${lastname}';
+          fullname = '$firstname $lastname';
           if (firstname != null &&
               widget.yesnostor != null &&
               counterrr.count2 < counterrr.selectedQuestions.length) {
-            print('${firstname} ${lastname}');
+            print('$firstname $lastname');
             // print(fullname);
             print(counterrr.selectedQuestions[counterrr.count2]);
             print(widget.yesnostor);
             print(DateTime.now().toString());
 
-            Question q1 = Question(
-              answer: widget.yesnostor,
-              question: counterrr.selectedQuestions[counterrr.count2],
-              createdAt: DateTime.now().toString(),
-              fullname: fullname,
-            );
+            // Question q1 = Question(
+            //   answer: widget.yesnostor,
+            //   question: counterrr.selectedQuestions[counterrr.count2],
+            //   createdAt: DateTime.now().toString(),
+            //   fullname: fullname,
+            // );
 
             CollectionReference dashboardquestions =
                 FirebaseFirestore.instance.collection('dashboardquestions');
@@ -79,7 +80,7 @@ class _GetDataFromEmployeeToFirebaseState
                     ).toMap(),
                   )
                   .then((value) => print('User Added'))
-                  .catchError((error) => print('Failed to add user: ${error}'));
+                  .catchError((error) => print('Failed to add user: $error'));
 
               // print('question added successfully');
             } catch (e) {
@@ -172,10 +173,10 @@ class _GetDataFromEmployeeToFirebaseState
     // counterrr.datalength = data.length;
     // fillSelectedQuestion(counterrr, data);
 
-    return Center(
+    return const Center(
       child: Text(
         "",
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 23,
           fontWeight: FontWeight.bold,
         ),

@@ -20,11 +20,11 @@ class _GetDataFromFirestoreToEmployeeState extends State<GetDataFromFirestoreToE
     final counterrr = Provider.of<Counter>(context);
     //counterrr.count = counterrr.datalength!;
 
-    CollectionReference questions_bank =
+    CollectionReference questionsBank =
         FirebaseFirestore.instance.collection('questions_bank');
 
     return FutureBuilder<DocumentSnapshot>(
-      future: questions_bank.doc('UEJYt8VYGjHM1en8i0DV').get(),
+      future: questionsBank.doc('UEJYt8VYGjHM1en8i0DV').get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -36,14 +36,15 @@ class _GetDataFromFirestoreToEmployeeState extends State<GetDataFromFirestoreToE
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
+          // Map<String, dynamic> data =
+          //     snapshot.data!.data() as Map<String, dynamic>;
+
           // counterrr.datalength = data.length;
           // fillSelectedQuestion(counterrr, data);
 
           if (counterrr.count >= counterrr.selectedQuestions.length) {
             //counterrr.index--;
-            return Text(
+            return const Text(
               'there is no other questions ✋',
               style: TextStyle(
                 fontSize: 25,

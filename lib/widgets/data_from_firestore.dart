@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:employees_app/provider/counter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
   Widget build(BuildContext context) {
     final counterrr = Provider.of<Counter>(context);
 
-    CollectionReference questions_bank =
+    CollectionReference questionsBank =
         FirebaseFirestore.instance.collection('questions_bank');
 
     CollectionReference dashboardquestions =
@@ -30,7 +31,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
 
 
     final dialogUsernameController = TextEditingController();
-    final credential = FirebaseAuth.instance.currentUser;
+   // final credential = FirebaseAuth.instance.currentUser;
 
     myDialog(Map data, int length) {
       return showDialog(
@@ -49,7 +50,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
                       controller: dialogUsernameController,
                       maxLength: 40,
                       decoration:
-                          InputDecoration(hintText: "Enter new question")),
+                          const InputDecoration(hintText: "Enter new question")),
                   const SizedBox(
                     height: 5,
                   ),
@@ -58,7 +59,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
                     children: [
                       TextButton(
                           onPressed: () {
-                            questions_bank
+                            questionsBank
                                 .doc('UEJYt8VYGjHM1en8i0DV')
                                 .update({
                                   '${length + 1}':
@@ -74,6 +75,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
                                   '${length + 1}':
                                       dialogUsernameController.text,
                                 })
+                                // ignore: avoid_print
                                 .then((value) => print("User Added"))
                                 .catchError((error) =>
                                     print("Failed to add user: $error"));
@@ -120,7 +122,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
     }
 
     return FutureBuilder<DocumentSnapshot>(
-      future: questions_bank.doc('UEJYt8VYGjHM1en8i0DV').get(),
+      future: questionsBank.doc('UEJYt8VYGjHM1en8i0DV').get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -151,7 +153,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 const Text(
@@ -178,7 +180,7 @@ class _GetDataFromFirestoreState extends State<GetDataFromFirestore> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Padding(

@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class QuestionsBank extends StatelessWidget {
   QuestionsBank({super.key});
 
-  static String id = 'QuestionsBank';
+ static String id = 'QuestionsBank';
   final credential = FirebaseAuth.instance.currentUser;
 
   CollectionReference questions_bank =
@@ -34,7 +34,7 @@ class QuestionsBank extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GetDataFromFirestore(),
+              const GetDataFromFirestore(),
               const SizedBox(
                 height: 10,
               ),
